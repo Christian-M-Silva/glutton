@@ -1,16 +1,7 @@
 import axios from "axios"
 
-// axios.interceptors.response.use(function (response) {
-//     return response;
-
-// }, function (erro) {
-
-//     console.log(erro)
-//     return Promise.reject(erro);
-//     this.$emit("response-api", erro)
-// })
-
 export default {
+
     name: 'areaButton',
 
     props: {
@@ -30,9 +21,6 @@ export default {
 
     methods: {
         getAll() {
-          
-
-
             axios.get(this.urlReceived)
                 .then(response => {
                     this.$emit("response-api", response)
@@ -91,6 +79,6 @@ export default {
                 this.urlReceived = 'https://jsonplaceholder.typicode.com/posts?_limit=5'
             }
         }
-    }
+    },
 }
 

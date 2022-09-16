@@ -19,9 +19,8 @@ export default {
     methods: {
         showResponse(response) {
             this.status = response.status ? response.status : response.response.status
-            const dataTag = document.getElementById('data')
-            dataTag.innerHTML = JSON.stringify(response.data, null, 2)
-            Prism.highlightElement(dataTag);
+            this.$refs.data.innerHTML = JSON.stringify(response.data, null, 2)
+            Prism.highlightElement( this.$refs.data);
         }
     },
 }

@@ -50,7 +50,7 @@
         </div>
 
         <area-response class="pl-3 h-72 overflow-auto">
-          <pre><code id="data" class="language-js line-numbers">{{data}}</code></pre>
+          <pre><code ref="data" class="language-js line-numbers">{{data}}</code></pre>
         </area-response>
       </section>
 
