@@ -13,6 +13,9 @@ export default {
             url: '',
             status: '',
             data: '',
+            config: '',
+            headers: '',
+            loading: false
         }
     },
 
@@ -20,7 +23,11 @@ export default {
         showResponse(response) {
             this.status = response.status ? response.status : response.response.status
             this.$refs.data.innerHTML = JSON.stringify(response.data, null, 2)
-            Prism.highlightElement( this.$refs.data);
+            this.$refs.config.innerHTML = JSON.stringify(response.config, null, 2)
+            this.$refs.headers.innerHTML = JSON.stringify(response.headers, null, 2)
+            Prism.highlightElement(this.$refs.data);
+            Prism.highlightElement(this.$refs.config);
+            Prism.highlightElement(this.$refs.headers);
         }
     },
 }

@@ -40,28 +40,30 @@
             :class="
               status > 199 && status < 299
                 ? 'bg-green-500 px-2 font-medium text-green-900 rounded-md'
-                : status > 399 && status < 600
+                : status !== '' 
                 ? 'bg-red-500 px-2 font-medium text-red-900 rounded-md'
                 : ''
             "
           >
-            {{ status }}
+            {{ status }} 
           </span>
         </div>
 
         <area-response class="pl-3 h-72 overflow-auto">
           <pre><code ref="data" class="language-js line-numbers">{{data}}</code></pre>
+
+          <img v-show="loading" class="animate-spin h-20" src="../../asset/recarregar.png" alt="">
         </area-response>
       </section>
 
-      <div class="flex justify-between pb-7">
+      <div class="flex justify-between pb-9">
         <section class="w-[49%]">
           <div class="border-b-[.5px] p-3 mb-5">
             <span class="text-gray-300 font-medium">Headers</span>
           </div>
 
           <area-response class="pl-3 h-64 overflow-auto"> 
-            <pre><code >area response</code></pre>
+            <pre><code ref="headers" class="language-js line-numbers">{{headers}}</code></pre>
           </area-response>
         </section>
 
@@ -70,13 +72,13 @@
             <span class="text-gray-300 font-medium">Config</span>
           </div>
 
-          <area-response class="pl-3 h-64 overflow-auto"><pre><code >area response</code></pre></area-response>
+          <area-response class="pl-3 h-64 overflow-auto"><pre><code ref="config" class="language-js line-numbers">{{config}}</code></pre></area-response>
         </section>
       </div>
     </div>
 
-    <footer class="text-center pb-2">
-      <span>DEVELOP BY CHRISTIAN</span>
+    <footer class="text-center pb-5 ">
+      <a href="https://github.com/Christian-M-Silva" target="_blank" class="bg-red-500 font-bold shadow-lg shadow-red-500/50 rounded-md p-2">DEVELOP 🎮 <span class="text-red-700">CHRISTIAN</span></a>
     </footer>
   </div>
 </template>
