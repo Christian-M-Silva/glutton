@@ -23,6 +23,7 @@
       </div>
       <area-button
         @response-api="showResponse"
+        @loading="showLoading"
         :Url="url"
         GetId
         Post
@@ -40,19 +41,29 @@
             :class="
               status > 199 && status < 299
                 ? 'bg-green-500 px-2 font-medium text-green-900 rounded-md'
-                : status !== '' 
+                : status !== ''
                 ? 'bg-red-500 px-2 font-medium text-red-900 rounded-md'
                 : ''
             "
           >
-            {{ status }} 
+            {{ status }}
           </span>
         </div>
 
-        <area-response class="pl-3 h-72 overflow-auto">
-          <pre><code ref="data" class="language-js line-numbers">{{data}}</code></pre>
+        <area-response
+          class="h-72 overflow-auto"
+          :class="loading ? 'flex justify-center items-center' : 'pl-3 '"
+        >
+          <pre
+            v-show="!loading"
+          ><code ref="data" class="language-js line-numbers">{{data}}</code></pre>
 
-          <img v-show="loading" class="animate-spin h-20" src="../../asset/recarregar.png" alt="">
+          <img
+            v-show="loading"
+            class="animate-spin h-20"
+            src="../../asset/recarregar.png"
+            alt=""
+          />
         </area-response>
       </section>
 
@@ -62,8 +73,20 @@
             <span class="text-gray-300 font-medium">Headers</span>
           </div>
 
-          <area-response class="pl-3 h-64 overflow-auto"> 
-            <pre><code ref="headers" class="language-js line-numbers">{{headers}}</code></pre>
+          <area-response
+            class="h-64 overflow-auto"
+            :class="loading ? 'flex justify-center items-center' : 'pl-3 '"
+          >
+            <pre
+              v-show="!loading"
+            ><code ref="headers" class="language-js line-numbers">{{headers}}</code></pre>
+
+            <img
+              v-show="loading"
+              class="animate-spin h-20"
+              src="../../asset/recarregar.png"
+              alt=""
+            />
           </area-response>
         </section>
 
@@ -72,13 +95,32 @@
             <span class="text-gray-300 font-medium">Config</span>
           </div>
 
-          <area-response class="pl-3 h-64 overflow-auto"><pre><code ref="config" class="language-js line-numbers">{{config}}</code></pre></area-response>
+          <area-response
+            class="h-64 overflow-auto"
+            :class="loading ? 'flex justify-center items-center' : 'pl-3 '"
+          >
+            <pre
+              v-show="!loading"
+            ><code ref="config" class="language-js line-numbers">{{config}}</code></pre>
+
+            <img
+              v-show="loading"
+              class="animate-spin h-20"
+              src="../../asset/recarregar.png"
+              alt=""
+            />
+          </area-response>
         </section>
       </div>
     </div>
 
-    <footer class="text-center pb-5 ">
-      <a href="https://github.com/Christian-M-Silva" target="_blank" class="bg-red-500 font-bold shadow-lg shadow-red-500/50 rounded-md p-2">DEVELOP 🎮 <span class="text-red-700">CHRISTIAN</span></a>
+    <footer class="text-center pb-5">
+      <a
+        href="https://github.com/Christian-M-Silva"
+        target="_blank"
+        class="bg-red-500 font-bold shadow-lg shadow-red-500/50 rounded-md p-2"
+        >DEVELOP 🎮 <span class="text-red-700">CHRISTIAN</span></a
+      >
     </footer>
   </div>
 </template>

@@ -28,6 +28,9 @@ export default {
             Prism.highlightElement(this.$refs.data);
             Prism.highlightElement(this.$refs.config);
             Prism.highlightElement(this.$refs.headers);
+        },
+        showLoading(isLoading){
+            this.loading = isLoading
         }
     },
 }

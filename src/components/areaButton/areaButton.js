@@ -1,4 +1,5 @@
 import axios from "axios"
+const widthScreenAtual = window.screen.width
 
 export default {
 
@@ -16,17 +17,22 @@ export default {
     data() {
         return {
             urlReceived: 'https://jsonplaceholder.typicode.com/posts?_limit=5',
+            widthScreen: widthScreenAtual
         }
     },
 
     methods: {
         getAll() {
+            this.$emit('loading', true)
             axios.get(this.urlReceived)
                 .then(response => {
                     this.$emit("response-api", response)
                 })
                 .catch(erro => {
                     this.$emit("response-api", erro)
+                })
+                .finally(() => {
+                    this.$emit('loading', false)
                 })
         },
 
@@ -50,22 +56,6 @@ export default {
             alert("Delete")
         },
 
-        multiples() {
-            alert("Multiples")
-        },
-
-        transform() {
-            alert("Transform")
-        },
-
-        error() {
-            alert("Error")
-        },
-
-        cancel() {
-            alert("Cancel")
-        },
-
         clear() {
             alert("Clear")
         },
@@ -78,6 +68,8 @@ export default {
             if (this.urlReceived == '') {
                 this.urlReceived = 'https://jsonplaceholder.typicode.com/posts?_limit=5'
             }
+
+            console.log(this.$root)
         }
     },
 }
