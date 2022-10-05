@@ -1,5 +1,4 @@
 import axios from "axios"
-const widthScreenAtual = window.screen.width
 
 export default {
 
@@ -17,7 +16,7 @@ export default {
     data() {
         return {
             urlReceived: 'https://jsonplaceholder.typicode.com/posts?_limit=5',
-            widthScreen: widthScreenAtual
+            widthScreenAtual: window.screen.width,
         }
     },
 
@@ -69,7 +68,7 @@ export default {
                 this.urlReceived = 'https://jsonplaceholder.typicode.com/posts?_limit=5'
             }
 
-            console.log(this.$root)
+            console.log(this.$attrs)
         }
     },
 }
