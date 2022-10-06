@@ -19,7 +19,7 @@
           type="text"
           placeholder="Ex.: https://jsonplaceholder.typicode.com/posts?_limit=5"
           v-model="url"
-        />
+        /> 
       </div>
       <area-button
         @response-api="showResponse"
