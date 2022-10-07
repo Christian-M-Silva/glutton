@@ -2,7 +2,7 @@
   <div>
     <div
       v-if="widthScreenAtual > 529"
-      class="flex items-center justify-between borda"
+      class="flex items-center justify-between"
     >
       <div class="flex items-center gap-2">
         <button
@@ -113,13 +113,17 @@
       </button>
     </div>
 
-    <div v-if="widthScreenAtual < 530">
-      <span
-        >Fazer um jeito de que dentro dessa div tenha o select e ele só apareça
-        se o tamanho da tela for 530, se eu não encontra um jeito o que eu posso
-        fazer é que quando a pessoa passe o mouse por cima da pag ele chame a
-        função, ou ver se tem algum evento quando a tela é redimensionada
-      </span>
+    <div v-if="widthScreenAtual < 530" class="flex items-center justify-center">
+      <select v-model="valueSelect" name="select" class="form-select rounded-md">
+        <option value="">SELECIONE UM MÉTODO</option>
+        <option value="getAll">GET ALL</option>
+        <option value="getId">GET ID</option>
+        <option value="post">POST</option>
+        <option value="put">PUT</option>
+        <option value="patch">PATCH</option>
+        <option value="delete">DELETE</option>
+        <option value="clear">CLEAR</option>
+      </select> 
     </div>
   </div>
 </template>

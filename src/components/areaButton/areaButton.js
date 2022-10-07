@@ -24,6 +24,7 @@ export default {
         return {
             urlReceived: 'https://jsonplaceholder.typicode.com/posts?_limit=5',
             widthScreenAtual: window.screen.width,
+            valueSelect: "",
         }
     },
 
@@ -75,54 +76,39 @@ export default {
                 this.urlReceived = 'https://jsonplaceholder.typicode.com/posts?_limit=5'
             }
 
-            
         },
+
+        valueSelect(newValue) {
+           switch (newValue) {
+            case "getAll":
+                this.getAll()
+                break;
+                
+            case "getId":
+                this.getId()
+                break;
+                
+            case "post":
+                this.post()
+                break;
+                
+            case "put":
+                this.put()
+                break;
+                
+            case "patch":
+                this.patch()
+                break;
+                
+            case "delete":
+                this.del()
+                break;
+
+            case "clear":
+                this.clear()
+                break;
+
+        }
+        }
     },
 }
-
-
-// DEPOIS DAR UMA OLHADA NESSE COD
-
-// VUE
-
-{/* <div id="app">
-  <button @click="getScreenSize">Qual tamanho da tela ?</button>
-  {{teste}}
-</div> */}
-
-
-// JS
-
-// // Defining event listener function
-// function displayWindowSize(){
-//     // Get width and height of the window excluding scrollbars
-//     var w = document.documentElement.clientWidth;
-//     var h = document.documentElement.clientHeight;
-    
-//     //Execta aqui o que quer para alterarcao da tela
-//     alert(w);
-    
-//     // Display result inside a div element
-//     //document.getElementById("result").innerHTML = "Width: " + w + ", " + "Height: " + h;
-// }
-    
-// // Attaching the event listener function to window's resize event
-// window.addEventListener("resize", displayWindowSize);
-
-// // Calling the function for the first time
-// //displayWindowSize();
-
-// var screenSize = () => { return window.screen.width ;}
-
-// new Vue({
-//   el: '#app',
-//   data: {
-//   teste: window.screen.width,
-//   },
-//   methods: {
-//     getScreenSize() {
-//       alert(screenSize());
-//     }
-//   }
-// })
-
