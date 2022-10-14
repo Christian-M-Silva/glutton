@@ -32,10 +32,10 @@ export default {
         getAll() {
             this.$emit('loading', true)
             axios.get(this.urlReceived)
-                .then(response => {
-                    this.$emit("response-api", response)
-                })
-                .catch(erro => {
+            .then(response => {
+                this.$emit("response-api", response)
+            })
+            .catch(erro => {
                     this.$emit("response-api", erro)
                 })
                 .finally(() => {

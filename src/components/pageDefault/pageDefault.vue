@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-slate-800 h-full">
+  <div class="bg-slate-800 h-full 2xl:h-screen">
     <header class="text-center">
       <h1 class="text-gray-300 font-semibold text-2xl py-4">GLUTTON</h1>
     </header>
@@ -34,7 +34,7 @@
     </div>
 
     <div class="px-4">
-      <section class="mb-7">
+      <section class="mb-7 2xl:h-[40rem]">
         <div class="border-b-[.5px] flex justify-between p-3 mb-5">
           <span class="text-gray-300 font-medium">Data</span>
           <span
@@ -51,7 +51,7 @@
         </div>
 
         <area-response
-          class="h-72 overflow-auto"
+          class="h-96 overflow-auto"
           :class="loading ? 'flex justify-center items-center' : 'pl-3 '"
         >
           <pre
@@ -67,8 +67,8 @@
         </area-response>
       </section>
 
-      <div class="flex justify-between pb-9">
-        <section class="w-[49%]">
+      <div class="flex flex-col justify-between pb-9 lg:flex-row">
+        <section class="mb-7 lg:w-[49%] lg:mb-0">
           <div class="border-b-[.5px] p-3 mb-5">
             <span class="text-gray-300 font-medium">Headers</span>
           </div>
@@ -90,7 +90,7 @@
           </area-response>
         </section>
 
-        <section class="w-[49%]">
+        <section class="lg:w-[49%]">
           <div class="border-b-[.5px] p-3 mb-5">
             <span class="text-gray-300 font-medium">Config</span>
           </div>
