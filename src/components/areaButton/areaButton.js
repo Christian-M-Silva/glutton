@@ -11,9 +11,7 @@ export default {
     name: 'areaButton',
 
     props: {
-        GetId: Boolean,
         Post: Boolean,
-        Put: Boolean,
         Patch: Boolean,
         Delete: Boolean,
         Url: String
@@ -29,13 +27,13 @@ export default {
     },
 
     methods: {
-        getAll() {
+        get() {
             this.$emit('loading', true)
             axios.get(this.urlReceived)
-            .then(response => {
-                this.$emit("response-api", response)
-            })
-            .catch(erro => {
+                .then(response => {
+                    this.$emit("response-api", response)
+                })
+                .catch(erro => {
                     this.$emit("response-api", erro)
                 })
                 .finally(() => {
@@ -43,16 +41,21 @@ export default {
                 })
         },
 
-        getId() {
-            alert("GetId")
-        },
-
         post() {
-            alert("Post")
-        },
+            // alert("Post")
 
-        put() {
-            alert("Put")
+            this.$emit('showModal', true)
+            // this.$emit('loading', true) depois é só descomentar
+            axios.post(this.urlReceived, data)
+                .then(response => {
+                    this.$emit("response-api", response)
+                })
+                .catch(erro => {
+                    this.$emit("response-api", erro)
+                })
+                .finally(() => {
+                    this.$emit('loading', false)
+                })
         },
 
         patch() {
@@ -79,36 +82,28 @@ export default {
         },
 
         valueSelect(newValue) {
-           switch (newValue) {
-            case "getAll":
-                this.getAll()
-                break;
-                
-            case "getId":
-                this.getId()
-                break;
-                
-            case "post":
-                this.post()
-                break;
-                
-            case "put":
-                this.put()
-                break;
-                
-            case "patch":
-                this.patch()
-                break;
-                
-            case "delete":
-                this.del()
-                break;
+            switch (newValue) {
+                case "get":
+                    this.get()
+                    break;
 
-            case "clear":
-                this.clear()
-                break;
+                case "post":
+                    this.post()
+                    break;
 
-        }
+                case "patch":
+                    this.patch()
+                    break;
+
+                case "delete":
+                    this.del()
+                    break;
+
+                case "clear":
+                    this.clear()
+                    break;
+
+            }
         }
     },
 }

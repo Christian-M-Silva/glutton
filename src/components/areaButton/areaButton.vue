@@ -6,7 +6,7 @@
     >
       <div class="flex items-center gap-2">
         <button
-          @click="getAll"
+          @click="get"
           class="
             p-2
             hover:shadow-lg hover:bg-cyan-500 hover:shadow-cyan-500/50
@@ -17,25 +17,9 @@
             focus:p-[.7rem]
           "
         >
-          GET ALL
+          GET
         </button>
-        <button
-          v-if="GetId"
-          @click="getId"
-          class="
-            bg-blue-500
-            p-2
-            shadow-blue-500/50
-            hover:bg-blue-500
-            p-2
-            hover:shadow-blue-500/50 hover:shadow-lg
-            font-medium
-            text-blue-900
-            focus:p-[.7rem]
-          "
-        >
-          GET ID
-        </button>
+
         <button
           v-if="Post"
           @click="post"
@@ -48,23 +32,10 @@
             text-green-900
             focus:p-[.7rem]
           "
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModalScrollable"
         >
           POST
-        </button>
-        <button
-          v-if="Put"
-          @click="put"
-          class="
-            bg-lime-500
-            p-2
-            shadow-lime-500/50
-            hover:bg-lime-500 hover:shadow-lime-500/50 hover:shadow-lg
-            font-medium
-            text-lime-900
-            focus:p-[.7rem]
-          "
-        >
-          PUT
         </button>
         <button
           v-if="Patch"
@@ -114,16 +85,18 @@
     </div>
 
     <div v-if="widthScreenAtual < 530" class="flex items-center justify-center">
-      <select v-model="valueSelect" name="select" class="form-select rounded-md">
+      <select
+        v-model="valueSelect"
+        name="select"
+        class="form-select rounded-md"
+      >
         <option value="">SELECIONE UM MÉTODO</option>
-        <option value="getAll">GET ALL</option>
-        <option value="getId">GET ID</option>
+        <option value="get">GET</option>
         <option value="post">POST</option>
-        <option value="put">PUT</option>
         <option value="patch">PATCH</option>
         <option value="delete">DELETE</option>
         <option value="clear">CLEAR</option>
-      </select> 
+      </select>
     </div>
   </div>
 </template>
