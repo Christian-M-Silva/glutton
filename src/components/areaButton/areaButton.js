@@ -1,4 +1,5 @@
 import axios from "axios"
+import 'tw-elements';
 
 window.onresize = changeWidth
 
@@ -14,7 +15,8 @@ export default {
         Post: Boolean,
         Patch: Boolean,
         Delete: Boolean,
-        Url: String
+        Url: String,
+        dataString: String
     },
 
 
@@ -23,6 +25,7 @@ export default {
             urlReceived: 'https://jsonplaceholder.typicode.com/posts?_limit=5',
             widthScreenAtual: window.screen.width,
             valueSelect: "",
+            dataSend: "{\n\n}",
         }
     },
 
@@ -42,10 +45,8 @@ export default {
         },
 
         post() {
-            // alert("Post")
-
-            this.$emit('showModal', true)
-            // this.$emit('loading', true) depois é só descomentar
+            this.$emit('loading', true)
+            const data = JSON.parse(this.dataSend)
             axios.post(this.urlReceived, data)
                 .then(response => {
                     this.$emit("response-api", response)
@@ -69,6 +70,14 @@ export default {
         clear() {
             alert("Clear")
         },
+
+        // indent() {
+        //     const indentString = (str, count, indent = ' ') =>
+        //         str.replace(/^/gm, indent.repeat(count));
+
+        //     this.dataSend = indentString(this.dataSend, 2);
+
+        // },
     },
 
     watch: {
@@ -87,9 +96,11 @@ export default {
                     this.get()
                     break;
 
-                case "post":
-                    this.post()
-                    break;
+                // case "post":
+                //     <button data-bs-toggle="modal" data-bs-target="#showModal">
+                //     POST
+                //   </button>
+                //     break;
 
                 case "patch":
                     this.patch()

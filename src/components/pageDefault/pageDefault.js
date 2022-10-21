@@ -1,6 +1,5 @@
 import areaButton from '@/components/areaButton/areaButton.vue'
 import areaResponse from '@/components/areaResponse/areaResponse.vue'
-import 'tw-elements';
 export default {
     name: 'pageDefault',
 
@@ -18,26 +17,10 @@ export default {
             headers: '',
             loading: false,
             show: false,
-            dataSend: "{\n\n}"
         }
     },
 
     methods: {
-        // indent() {
-        //     const indentString = (str, count, indent = ' ') =>
-        //         str.replace(/^/gm, indent.repeat(count));
-
-        //     this.dataSend = indentString(this.dataSend, 2);
-
-        // },
-
-        send() {
-            console.log("Texto:")
-            console.log(this.dataSend)
-            console.log("JSON:")
-            console.log(JSON.parse(this.dataSend))
-        },
-
         showResponse(response) {
             this.status = response.status ? response.status : response.response.status
             if (response.status > 199 && response.status < 400) {
@@ -61,10 +44,5 @@ export default {
         showLoading(isLoading) {
             this.loading = isLoading
         },
-
-        showModal(isShow) {
-            // alert(isShow)
-            this.show = isShow
-        }
     },
 }
