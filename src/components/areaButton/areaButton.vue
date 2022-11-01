@@ -38,7 +38,6 @@
         </button>
         <button
           v-if="Patch"
-          @click="patch"
           class="
             bg-teal-500
             p-2
@@ -48,6 +47,8 @@
             text-teal-900
             focus:p-[.7rem]
           "
+          data-bs-toggle="modal"
+          data-bs-target="#showModal"
         >
           PATCH
         </button>
@@ -96,7 +97,6 @@
         <option value="delete">DELETE</option>
         <option value="clear">CLEAR</option>
       </select>
-     
     </div>
 
     <!-- Modal -->

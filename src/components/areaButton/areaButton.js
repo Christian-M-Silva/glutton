@@ -60,11 +60,32 @@ export default {
         },
 
         patch() {
-            alert("Patch")
+            this.$emit('loading', true)
+            const data = JSON.parse(this.dataSend)
+            axios.patch(this.urlReceived, data)
+                .then(response => {
+                    this.$emit("response-api", response)
+                })
+                .catch(erro => {
+                    this.$emit("response-api", erro)
+                })
+                .finally(() => {
+                    this.$emit('loading', false)
+                })
         },
 
         del() {
-            alert("Delete")
+            this.$emit('loading', true)
+            axios.delete(this.urlReceived)
+                .then(response => {
+                    this.$emit("response-api", response)
+                })
+                .catch(erro => {
+                    this.$emit("response-api", erro)
+                })
+                .finally(() => {
+                    this.$emit('loading', false)
+                })
         },
 
         clear() {
