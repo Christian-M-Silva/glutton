@@ -44,5 +44,12 @@ export default {
         showLoading(isLoading) {
             this.loading = isLoading
         },
+
+        clean() {
+            this.$refs.data.innerHTML = ''
+            this.$refs.config.innerHTML = ''
+            this.$refs.headers.innerHTML = ''
+            this.status = ''
+        },
     },
 }

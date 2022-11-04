@@ -1,6 +1,6 @@
 import axios from "axios"
 import 'tw-elements';
-
+import * as indentation from 'indent-textarea';
 window.onresize = changeWidth
 
 function changeWidth() {
@@ -89,16 +89,8 @@ export default {
         },
 
         clear() {
-            alert("Clear")
+            this.$emit('clear')
         },
-
-        // indent() {
-        //     const indentString = (str, count, indent = ' ') =>
-        //         str.replace(/^/gm, indent.repeat(count));
-
-        //     this.dataSend = indentString(this.dataSend, 2);
-
-        // },
     },
 
     watch: {
@@ -136,6 +128,11 @@ export default {
                     break;
 
             }
-        }
+        },
+
+        dataSend() {
+            const textarea = document.querySelector('textarea');
+            indentation.watch(textarea);
+        },
     },
 }

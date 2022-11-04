@@ -23,6 +23,7 @@
       <area-button
         @response-api="showResponse"
         @loading="showLoading"
+        @clear="clean"
         :Url="url"
         Post
         Delete
