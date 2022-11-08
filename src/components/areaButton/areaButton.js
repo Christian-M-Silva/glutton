@@ -7,6 +7,9 @@ function changeWidth() {
     this.__VUE_HOT_MAP__['c7c196a2'].instances[0].$data.widthScreenAtual = window.screen.width
 }
 
+// const CancelToken = axios.CancelToken;
+// const source = CancelToken.source();
+
 export default {
 
     name: 'areaButton',
@@ -26,13 +29,23 @@ export default {
             widthScreenAtual: window.screen.width,
             valueSelect: "",
             dataSend: "{\n\n}",
+            tokenJwt: '',
+            showModalPostAndPatch: false,
+            showModalToken: false
         }
     },
 
     methods: {
         get() {
             this.$emit('loading', true)
-            axios.get(this.urlReceived)
+
+            const headers = {
+                headers: {
+                    'Authorization': `Bearer ${this.tokenJwt}`
+                }
+            }
+
+            axios.get(this.urlReceived, headers)
                 .then(response => {
                     this.$emit("response-api", response)
                 })
@@ -45,9 +58,20 @@ export default {
         },
 
         post() {
+            this.showModalPostAndPatch = false
+
             this.$emit('loading', true)
+
             const data = JSON.parse(this.dataSend)
-            axios.post(this.urlReceived, data)
+            const headers = {
+                headers: {
+                    'Authorization': `Bearer ${this.tokenJwt}`
+                }
+            }
+
+            axios.post(this.urlReceived, data, headers, {
+                // cancelToken: source.token
+              })
                 .then(response => {
                     this.$emit("response-api", response)
                 })
@@ -60,9 +84,18 @@ export default {
         },
 
         patch() {
+            this.showModalPostAndPatch = false
+
             this.$emit('loading', true)
+
+            const headers = {
+                headers: {
+                    'Authorization': `Bearer ${this.tokenJwt}`
+                }
+            }
             const data = JSON.parse(this.dataSend)
-            axios.patch(this.urlReceived, data)
+
+            axios.patch(this.urlReceived, data, headers)
                 .then(response => {
                     this.$emit("response-api", response)
                 })
@@ -76,7 +109,14 @@ export default {
 
         del() {
             this.$emit('loading', true)
-            axios.delete(this.urlReceived)
+
+            const headers = {
+                headers: {
+                    'Authorization': `Bearer ${this.tokenJwt}`
+                }
+            }
+
+            axios.delete(this.urlReceived, headers)
                 .then(response => {
                     this.$emit("response-api", response)
                 })
@@ -86,6 +126,10 @@ export default {
                 .finally(() => {
                     this.$emit('loading', false)
                 })
+        },
+
+        cancel(){
+            alert("cancel")
         },
 
         clear() {
@@ -109,22 +153,28 @@ export default {
                     this.get()
                     break;
 
-                // case "post":
-                //     <button data-bs-toggle="modal" data-bs-target="#showModal">
-                //     POST
-                //   </button>
-                //     break;
+                case "post":
+                    this.showModalPostAndPatch = true
+                    break;
 
                 case "patch":
-                    this.patch()
+                    this.showModalPostAndPatch = true
                     break;
 
                 case "delete":
                     this.del()
                     break;
 
+                case "tokenJwt":
+                    this.showModalToken = true
+                    break;
+
                 case "clear":
                     this.clear()
+                    break;
+
+                case "abort":
+                    this.cancel()
                     break;
 
             }

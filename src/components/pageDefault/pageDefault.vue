@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-slate-800 h-full 2xl:h-screen">
+  <div class="bg-slate-800 h-full 2xl:h-full">
     <header class="text-center">
       <h1 class="text-gray-300 font-semibold text-2xl py-4">GLUTTON</h1>
     </header>
