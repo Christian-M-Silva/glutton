@@ -31,7 +31,7 @@
             text-green-900
             focus:p-[.7rem]
           "
-          @click="showModalPostAndPatch = true"
+          @click="chooseModalButton('post')"
         >
           POST
         </button>
@@ -46,7 +46,7 @@
             text-teal-900
             focus:p-[.7rem]
           "
-          @click="showModalPostAndPatch = true"
+          @click="chooseModalButton('patch')"
         >
           PATCH
         </button>
@@ -189,7 +189,6 @@
             <button
               type="button"
               class="
-                btn-close
                 box-content
                 w-4
                 h-4
@@ -202,7 +201,9 @@
                 hover:text-black hover:opacity-75 hover:no-underline
               "
               @click="showModalPostAndPatch = false"
-            ></button>
+            >
+              <img src="../../asset/x.png" alt="" />
+            </button>
           </div>
           <div class="modal-body relative p-4">
             <p class="text-gray-400 mb-3">
@@ -273,6 +274,7 @@
               @click.prevent="post"
               data-bs-dismiss="modal"
               aria-label="Close"
+              v-show="showButtonPost"
             >
               Send JSON for post
             </button>
@@ -304,6 +306,7 @@
               @click.prevent="patch"
               data-bs-dismiss="modal"
               aria-label="Close"
+               v-show="showButtonPatch"
             >
               Send JSON for patch
             </button>
@@ -372,7 +375,6 @@
             <button
               type="button"
               class="
-                btn-close
                 box-content
                 w-4
                 h-4
@@ -386,7 +388,9 @@
               "
               data-bs-dismiss="modal"
               @click="showModalToken = false"
-            ></button>
+            >
+              <img src="../../asset/x.png" alt="" />
+            </button>
           </div>
           <div class="modal-body relative p-4">
             <span class="pr-2 text-gray-300">Token JWT:</span>

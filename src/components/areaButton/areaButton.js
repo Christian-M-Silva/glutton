@@ -7,8 +7,8 @@ function changeWidth() {
     this.__VUE_HOT_MAP__['c7c196a2'].instances[0].$data.widthScreenAtual = window.screen.width
 }
 
-// const CancelToken = axios.CancelToken;
-// const source = CancelToken.source();
+const CancelToken = axios.CancelToken;
+let cancel;
 
 export default {
 
@@ -31,11 +31,21 @@ export default {
             dataSend: "{\n\n}",
             tokenJwt: '',
             showModalPostAndPatch: false,
-            showModalToken: false
+            showModalToken: false,
+            showButtonPost: false,
+            showButtonPatch: false,
         }
     },
 
     methods: {
+        chooseModalButton(value) {
+            this.showModalPostAndPatch = true
+            if (value == "post")
+                this.showButtonPost = true
+            else
+                this.showButtonPatch = true
+        },
+
         get() {
             this.$emit('loading', true)
 
@@ -63,15 +73,13 @@ export default {
             this.$emit('loading', true)
 
             const data = JSON.parse(this.dataSend)
-            const headers = {
+            const config = {
                 headers: {
                     'Authorization': `Bearer ${this.tokenJwt}`
-                }
+                },
             }
 
-            axios.post(this.urlReceived, data, headers, {
-                // cancelToken: source.token
-              })
+            axios.post(this.urlReceived, data, config)
                 .then(response => {
                     this.$emit("response-api", response)
                 })
@@ -128,8 +136,23 @@ export default {
                 })
         },
 
-        cancel(){
-            alert("cancel")
+        cancel() {
+            let config = {
+                cancelToken: new CancelToken(function executor(c) {
+                    cancel = c;
+                })
+            }
+
+            axios.get(this.urlReceived, config)
+                .catch(erro => {
+                    this.$emit("response-api", erro)
+                })
+                .finally(() => {
+                    this.$emit('loading', false)
+                })
+
+            cancel("Request canceled by user");
+
         },
 
         clear() {
@@ -138,6 +161,13 @@ export default {
     },
 
     watch: {
+        showModalPostAndPatch(value) {
+            if (!value) {
+                this.showButtonPatch = false
+                this.showButtonPost = false
+            }
+        },
+
         Url() {
             this.urlReceived = this.Url
 
@@ -154,11 +184,11 @@ export default {
                     break;
 
                 case "post":
-                    this.showModalPostAndPatch = true
+                    this.chooseModalButton("post")
                     break;
 
                 case "patch":
-                    this.showModalPostAndPatch = true
+                    this.chooseModalButton("patch")
                     break;
 
                 case "delete":

@@ -22,11 +22,18 @@ export default {
 
     methods: {
         showResponse(response) {
-            this.status = response.status ? response.status : response.response.status
+            this.status = response.status ? response.status : response.name === 'CanceledError' ? 499 : response.response.status
             if (response.status > 199 && response.status < 400) {
                 this.$refs.data.innerHTML = JSON.stringify(response.data, null, 2)
                 this.$refs.config.innerHTML = JSON.stringify(response.config, null, 2)
                 this.$refs.headers.innerHTML = JSON.stringify(response.headers, null, 2)
+                Prism.highlightElement(this.$refs.data);
+                Prism.highlightElement(this.$refs.config);
+                Prism.highlightElement(this.$refs.headers);
+            } else if (this.status === 499) {
+                this.$refs.data.innerHTML = JSON.stringify(response.message, null, 2)
+                this.$refs.config.innerHTML = JSON.stringify(response.code, null, 2)
+                this.$refs.headers.innerHTML = JSON.stringify(response.name, null, 2)
                 Prism.highlightElement(this.$refs.data);
                 Prism.highlightElement(this.$refs.config);
                 Prism.highlightElement(this.$refs.headers);
