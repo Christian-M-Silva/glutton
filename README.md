@@ -6,8 +6,6 @@
   - [The objectives](#the-objectives)
   - [How to run the project](#How-to-run-the-project)
   - [Solution link](#Solution-link)
-  - [Solution video](#Solution-video)
-  - [Screenshot](#screenshot)
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
@@ -35,19 +33,6 @@
 ### Solution link
 
 [Click here to go to the project](https://github.com/Christian-M-Silva/glutton)
-
-### Solution video
-
-[Click here to go to the video](https://www.youtube.com/playlist?list=PLBeFAzWm2NoXlG2ENdunhw4Wt-3WI_PlG)
-
-### Screenshot
-
-Desktop ![](Screenshot/Desktop-one.PNG) ![](Screenshot/Desktop-two.PNG) 
-
-Mobile Portrait <br/> ![](Screenshot/Mobile-Portrait-one.PNG) ![](Screenshot/Mobile-Portrait-two.PNG)
-
-Mobile Landscape![](Screenshot/Mobile-landscape-one.PNG) ![](Screenshot/Mobile-landscape-two.PNG)
-
 
 ## My process
 
