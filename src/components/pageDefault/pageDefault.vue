@@ -9,7 +9,6 @@
         <input
           id="url"
           class="
-            w-[34%]
             rounded-md
             px-1
             placeholder-slate-600
@@ -117,7 +116,7 @@
         href="https://github.com/Christian-M-Silva"
         target="_blank"
         class="bg-red-500 font-bold shadow-lg shadow-red-500/50 rounded-md p-2"
-        >DEVELOP 🎮 <span class="text-red-700">CHRISTIAN</span></a
+        >DEVELOPED 🎮 <span class="text-red-700">CHRISTIAN</span></a
       >
     </footer>
   </div>
